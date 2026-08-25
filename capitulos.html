@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="bandera">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulos y directiva — PeruTechAU</title>
+<meta name="description" content="Los capítulos regionales de PeruTechAU en Australia y las personas que forman la directiva.">
+
+<meta property="og:title" content="Capítulos y directiva — PeruTechAU">
+<meta property="og:description" content="Los capítulos regionales de PeruTechAU en Australia y las personas que forman la directiva.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#040B2E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+
+<div class="atmosfera"></div>
+<div class="grano"></div>
+
+<!-- ============================================================
+     SELECTOR DE PALETA — SOLO PARA ELEGIR.
+     Cuando el board decida, borra este <aside> en las cuatro
+     páginas y deja fijo el data-tema del <html>.
+     ============================================================ -->
+<aside id="selectorPaleta" style="
+  position:fixed;right:16px;bottom:16px;z-index:99;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(14px);
+  border:1px solid var(--borde);border-radius:12px;padding:12px 14px;
+  display:flex;flex-direction:column;gap:8px;max-width:190px">
+  <span class="mono" style="font-size:.6rem">Probar paleta</span>
+  <div style="display:flex;gap:8px">
+    <button data-p="bandera" title="Azul + rojo + blanco" aria-label="Paleta bandera"
+      style="width:40px;height:26px;border-radius:6px;border:2px solid #fff;cursor:pointer;
+      background:linear-gradient(115deg,#2E5BFF,#B02A6B 55%,#FF2D4E)"></button>
+    <button data-p="pacifico" title="Azul + verde + rojo" aria-label="Paleta pacifico"
+      style="width:40px;height:26px;border-radius:6px;border:2px solid transparent;cursor:pointer;
+      background:linear-gradient(115deg,#1E6BFF,#0FA3A3 55%,#25E0B0)"></button>
+    <button data-p="vivo" title="Los tres, saturado" aria-label="Paleta viva"
+      style="width:40px;height:26px;border-radius:6px;border:2px solid transparent;cursor:pointer;
+      background:linear-gradient(115deg,#3D5AFE,#7A3DFF 50%,#00E5A0)"></button>
+  </div>
+  <span class="mono" id="nombrePaleta" style="font-size:.58rem;letter-spacing:.1em">Bandera</span>
+</aside>
+
+<!-- ================= PESTAÑAS ================= -->
+<header class="nav" id="nav">
+  <div class="contenedor nav-int">
+    <a href="index.html" class="marca"><span class="marca-punto"></span>PeruTechAU</a>
+    <button class="nav-boton" id="navBoton" aria-expanded="false" aria-controls="navEnlaces" aria-label="Abrir menú">&#9776;</button>
+    <nav class="nav-enlaces" id="navEnlaces">
+      <a href="index.html">Inicio</a>
+      <a href="capitulos.html">Capítulos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="unete.html">Únete</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <p class="mono">Capítulos regionales</p>
+      <h1>Un mapa que <span class="degradado">falta por llenar</span></h1>
+      <p>Cada capítulo representa una región de Australia. Hoy solo uno está encendido. Los demás esperan a alguien que decida abrirlos — y ese alguien puedes ser tú.</p>
+    </div>
+  </section>
+
+  <section id="capitulos">
+    <div class="contenedor">
+      <div class="mapa-bloque">
+        <div class="mapa-lienzo revelar">
+          <svg viewBox="0 0 620 500" role="group" aria-label="Mapa de capítulos de PeruTechAU en Australia">
+            <defs>
+              <linearGradient id="gradLinea" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" style="stop-color:var(--cian)"/><stop offset="100%" style="stop-color:var(--grana)"/>
+              </linearGradient>
+            </defs>
+            <g id="rejilla"></g><g id="enlaces"></g><g id="nodos"></g>
+          </svg>
+        </div>
+        <div class="revelar">
+          <p class="mono">Estado de la red</p>
+          <h2 style="margin:14px 0 18px">Brisbane ya está en marcha</h2>
+          <p>Cuando un estado reúne suficientes miembros registrados, está listo para abrir su propio capítulo. El contador se actualiza con cada registro nuevo.</p>
+          <div class="contador">
+            <span class="mono" id="contadorTexto"></span>
+            <span class="contador-barra"><span id="contadorBarra" style="width:0"></span></span>
+          </div>
+          <a class="btn btn-fantasma" href="unete.html" style="margin-top:26px">Registrarme en mi estado</a>
+        </div>
+      </div>
+      <div class="capitulos-lista" id="capitulosLista"></div>
+    </div>
+  </section>
+
+  <section id="directiva">
+    <div class="contenedor">
+      <div class="encabezado-seccion revelar">
+        <p class="mono">Directiva</p>
+        <h2>Quiénes lo hacen posible</h2>
+        <p>Todos los que aparecen aquí trabajan de forma voluntaria para la comunidad.</p>
+      </div>
+      <div class="directiva" id="directivaLista"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="contenedor pie">
+    <div>
+      <a href="index.html" class="marca" style="margin-bottom:8px"><span class="marca-punto"></span>PeruTechAU</a>
+      <p class="mono" style="margin-top:10px">Organización sin fines de lucro · Brisbane, Queensland</p>
+    </div>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+      <a href="capitulos.html">Capítulos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="unete.html">Únete</a>
+      <a id="pieCorreo" href="#">Correo</a>
+      <a id="pieLinkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/contenido.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

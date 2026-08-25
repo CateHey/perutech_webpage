@@ -1,0 +1,24 @@
+# Datos de miembros y exports de la hoja de cálculo: NUNCA al repositorio
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.numbers
+exports/
+respuestas*/
+miembros*/
+
+# Credenciales
+.env
+.env.*
+*.json.key
+credenciales*
+*.pem
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="bandera">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Únete — PeruTechAU</title>
+<meta name="description" content="Regístrate en el directorio de la comunidad peruana de tecnología en Australia.">
+
+<meta property="og:title" content="Únete — PeruTechAU">
+<meta property="og:description" content="Regístrate en el directorio de la comunidad peruana de tecnología en Australia.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#040B2E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+
+<div class="atmosfera"></div>
+<div class="grano"></div>
+
+<!-- ============================================================
+     SELECTOR DE PALETA — SOLO PARA ELEGIR.
+     Cuando el board decida, borra este <aside> en las cuatro
+     páginas y deja fijo el data-tema del <html>.
+     ============================================================ -->
+<aside id="selectorPaleta" style="
+  position:fixed;right:16px;bottom:16px;z-index:99;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(14px);
+  border:1px solid var(--borde);border-radius:12px;padding:12px 14px;
+  display:flex;flex-direction:column;gap:8px;max-width:190px">
+  <span class="mono" style="font-size:.6rem">Probar paleta</span>
+  <div style="display:flex;gap:8px">
+    <button data-p="bandera" title="Azul + rojo + blanco" aria-label="Paleta bandera"
+      style="width:40px;height:26px;border-radius:6px;border:2px solid #fff;cursor:pointer;
+      background:linear-gradient(115deg,#2E5BFF,#B02A6B 55%,#FF2D4E)"></button>
+    <button data-p="pacifico" title="Azul + verde + rojo" aria-label="Paleta pacifico"
+      style="width:40px;height:26px;border-radius:6px;border:2px solid transparent;cursor:pointer;
+      background:linear-gradient(115deg,#1E6BFF,#0FA3A3 55%,#25E0B0)"></button>
+    <button data-p="vivo" title="Los tres, saturado" aria-label="Paleta viva"
+      style="width:40px;height:26px;border-radius:6px;border:2px solid transparent;cursor:pointer;
+      background:linear-gradient(115deg,#3D5AFE,#7A3DFF 50%,#00E5A0)"></button>
+  </div>
+  <span class="mono" id="nombrePaleta" style="font-size:.58rem;letter-spacing:.1em">Bandera</span>
+</aside>
+
+<!-- ================= PESTAÑAS ================= -->
+<header class="nav" id="nav">
+  <div class="contenedor nav-int">
+    <a href="index.html" class="marca"><span class="marca-punto"></span>PeruTechAU</a>
+    <button class="nav-boton" id="navBoton" aria-expanded="false" aria-controls="navEnlaces" aria-label="Abrir menú">&#9776;</button>
+    <nav class="nav-enlaces" id="navEnlaces">
+      <a href="index.html">Inicio</a>
+      <a href="capitulos.html">Capítulos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="unete.html">Únete</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <p class="mono">Registro de miembros</p>
+      <h1>Súmate al <span class="degradado">directorio</span></h1>
+    </div>
+  </section>
+
+  <section id="unete">
+    <div class="contenedor">
+      <div class="form-bloque">
+        <div class="revelar">
+          <p>Estamos construyendo el directorio de la comunidad peruana de tecnología en Australia. Toma menos de un minuto y nos sirve para saber dónde estamos y qué capítulo abrir después.</p>
+          <div class="privacidad">
+            <p class="mono">Tus datos</p>
+            <p>Tu correo y tus datos de contacto nunca se publican. Con tu registro sube el conteo de miembros de tu estado. Solo si marcas la casilla opcional, tu nombre, área y LinkedIn aparecen en el directorio de abajo <strong>24 horas después</strong> de registrarte. Puedes pedir que corrijamos o borremos tus datos escribiéndonos en cualquier momento.</p>
+          </div>
+        </div>
+
+        <form class="vidrio formulario revelar" id="formRegistro" novalidate>
+          <div class="campos">
+            <div class="campo">
+              <label for="f_nombre">Nombre y apellidos *</label>
+              <input id="f_nombre" name="nombre" type="text" required autocomplete="name" placeholder="María Quispe">
+            </div>
+            <div class="campo">
+              <label for="f_correo">Correo electrónico *</label>
+              <input id="f_correo" name="correo" type="email" required autocomplete="email" placeholder="maria@correo.com">
+            </div>
+            <div class="campo">
+              <label for="f_estado">Estado donde vives *</label>
+              <select id="f_estado" name="estado" required></select>
+            </div>
+            <div class="campo">
+              <label for="f_ciudad">Ciudad</label>
+              <input id="f_ciudad" name="ciudad" type="text" placeholder="Brisbane">
+            </div>
+            <div class="campo">
+              <label for="f_area">Área o especialidad *</label>
+              <select id="f_area" name="area" required></select>
+            </div>
+            <div class="campo">
+              <label for="f_nivel">Nivel de experiencia</label>
+              <select id="f_nivel" name="nivel"></select>
+            </div>
+            <div class="campo ancho">
+              <label for="f_rol">Rol actual</label>
+              <input id="f_rol" name="rol" type="text" placeholder="Data Engineer en una minera">
+            </div>
+            <div class="campo ancho">
+              <label for="f_linkedin">LinkedIn (opcional)</label>
+              <input id="f_linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/...">
+            </div>
+            <div class="campo ancho">
+              <label for="f_voluntario">¿Te gustaría colaborar como voluntario?</label>
+              <select id="f_voluntario" name="voluntario"></select>
+            </div>
+
+            <!-- Trampa anti-spam: invisible para personas, la llenan los bots -->
+            <input class="trampa" type="text" name="sitio_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <label class="consentimiento">
+              <input type="checkbox" name="consent_datos" id="f_consent1" required>
+              <span>Autorizo a PeruTechAU a guardar mis datos para gestionar la comunidad y contactarme sobre sus actividades. *</span>
+            </label>
+            <label class="consentimiento">
+              <input type="checkbox" name="consent_publico" id="f_consent2">
+              <span>Además, autorizo que mi nombre, área y LinkedIn aparezcan en el directorio público de miembros de esta web, 24 horas después de registrarme. <em>(Opcional — puedes dejarlo sin marcar.)</em></span>
+            </label>
+
+            <div class="form-estado" id="formEstado" role="status" aria-live="polite"></div>
+
+            <div class="campo ancho">
+              <button class="btn btn-primario" type="submit" id="formBoton" style="width:100%;justify-content:center">Registrarme</button>
+              <p class="form-nota">Los campos con * son obligatorios.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="directorio">
+    <div class="contenedor">
+      <div class="directorio-cabecera revelar">
+        <div>
+          <p class="mono">Directorio de miembros</p>
+          <h2>Quiénes ya están</h2>
+        </div>
+        <p class="directorio-nota" id="directorioNota" aria-live="polite"></p>
+      </div>
+      <div class="directorio-filtros" id="directorioFiltros" role="group" aria-label="Filtrar por estado"></div>
+      <div class="directorio-lista" id="directorioLista"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="contenedor pie">
+    <div>
+      <a href="index.html" class="marca" style="margin-bottom:8px"><span class="marca-punto"></span>PeruTechAU</a>
+      <p class="mono" style="margin-top:10px">Organización sin fines de lucro · Brisbane, Queensland</p>
+    </div>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+      <a href="capitulos.html">Capítulos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="unete.html">Únete</a>
+      <a id="pieCorreo" href="#">Correo</a>
+      <a id="pieLinkedin" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/contenido.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
