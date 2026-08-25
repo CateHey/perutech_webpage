@@ -19,7 +19,8 @@ capitulos.html / unete.html  ◀──GET──  Apps Script  ──▶  conteo 
 ## 2. Pegar el script
 1. En la hoja: **Extensiones → Apps Script**.
 2. Borra el contenido del editor y pega todo `apps-script/codigo.gs`.
-3. Si quieres recibir un correo por cada registro nuevo, escribe el correo en `AVISAR_A`.
+3. `AVISAR_A` ya está configurado con `catyvaras19@gmail.com`: llega un correo con asunto
+   `PERUTECH REGISTRO - <nombre>` por cada registro nuevo. Cámbialo ahí si quieres otro destinatario.
 4. Guarda (Ctrl+S).
 
 ## 3. Probar

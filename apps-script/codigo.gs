@@ -22,7 +22,7 @@
 const HOJA_RESPUESTAS = "Respuestas";
 const HOJA_PUBLICO = "Publico";
 const HORAS_ESPERA = 24;               // ventana antes de publicar un nombre
-const AVISAR_A = "";                    // correo para avisos de registro nuevo (opcional)
+const AVISAR_A = "catyvaras19@gmail.com"; // recibe un correo por cada registro nuevo
 const ESTADOS = ["QLD", "NSW", "VIC", "ACT", "SA", "WA", "NT", "TAS"];
 const COLUMNAS = [
   "fecha", "nombre", "correo", "estado", "ciudad", "area", "nivel", "rol",
@@ -202,7 +202,7 @@ function avisar_(reg) {
   try {
     MailApp.sendEmail({
       to: AVISAR_A,
-      subject: "PeruTechAU · nuevo registro: " + reg.nombre + " (" + reg.estado + ")",
+      subject: "PERUTECH REGISTRO - " + reg.nombre,
       body: "Nombre: " + reg.nombre + "\nEstado: " + reg.estado + "\nÁrea: " + reg.area +
             "\nPublicar nombre: " + (reg.consent_publico ? "Sí (en " + HORAS_ESPERA + " h)" : "No") +
             "\n\nRevisa la hoja de cálculo. Si no corresponde, borra la fila antes de que se publique."
