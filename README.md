@@ -131,7 +131,7 @@ compararlas en vivo. **Antes de publicar**, borra en las cuatro páginas el bloq
 - [ ] Imagen `assets/img/og-cover.png` (1200×630 px) para la previsualización al compartir
 - [ ] Decidir si se publican las cifras del primer año
 - [ ] Elegir la paleta y borrar el selector
-- [ ] Conectar el formulario a la hoja de cálculo (ver `README-formulario.md`)
+- [x] Conectar el formulario a la hoja de cálculo (ver `README-formulario.md`)
 - [ ] Cambiar `og:image` a la URL absoluta del dominio en las cuatro páginas
 
 ---

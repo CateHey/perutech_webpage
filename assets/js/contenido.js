@@ -39,7 +39,7 @@ const CONTENIDO = {
      Ninguna de las URLs expone correos.
      ------------------------------------------------------------ */
   formulario: {
-    endpoint: "",
+    endpoint: "https://script.google.com/macros/s/AKfycbyHmHceQYJ4IvJuEyW_JAhZlM0MqxRNyflqqKEgfaeINlTHZuU9kkk0elGjNnOkKPNL/exec",
     conteo_url: "",
     publicacion_horas: 24
   },
