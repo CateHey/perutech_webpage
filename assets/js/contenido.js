@@ -55,7 +55,7 @@ const CONTENIDO = {
   cifras: [
     { valor: "130+", etiqueta: "Miembros en el primer año" },
     { valor: "85%",  etiqueta: "Satisfacción en nuestros workshops" },
-    { valor: "25%",  etiqueta: "Participación en eventos presenciales" }
+    { valor: "100%", etiqueta: "Gratuito para miembros, siempre" }
   ],
 
   nosotros: {
