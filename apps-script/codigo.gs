@@ -138,8 +138,10 @@ function miembrosPublicos_() {
   const miembros = [], pendientesArr = [];
   filas.forEach(function (f) {
     if (!esSi_(f.consent_publico)) return;
+    // La ventana vigente (HORAS_ESPERA) manda siempre: cambiarla aplica a todas las
+    // filas, incluso a las escritas con otra ventana. publicar_desde queda informativo.
     const fecha = aFecha_(f.fecha);
-    const publicar = aFecha_(f.publicar_desde) || (fecha ? new Date(fecha.getTime() + HORAS_ESPERA * 3600 * 1000) : null);
+    const publicar = fecha ? new Date(fecha.getTime() + HORAS_ESPERA * 3600 * 1000) : aFecha_(f.publicar_desde);
     if (!publicar) return;
     if (ahora >= publicar.getTime()) {
       miembros.push({
