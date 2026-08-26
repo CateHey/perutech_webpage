@@ -447,9 +447,9 @@ Seis pasos, unos 20 minutos, sin programar. El detalle está en **`README-formul
 - Para impedir que un registro llegue al directorio: borrar la fila **antes** de `publicar_desde`.
 - `HORAS_ESPERA` (script) y `publicacion_horas` (`contenido.js`) deben coincidir.
 
-### 9.9 Directorio de miembros: la regla de las 24 horas
+### 9.9 Directorio de miembros y ventana de publicación
 
-Cuando alguien se registra, su estado suma un miembro al instante, pero **su nombre no aparece hasta 24 horas después**, y solo si marcó la casilla opcional de publicación. Ese plazo cumple dos funciones: le da al board una ventana para revisar y borrar registros que no correspondan (spam, datos falsos) antes de que se vean, y evita que alguien vea publicado su nombre en el mismo momento en que lo escribió, sin margen para arrepentirse.
+Cuando alguien se registra, su estado suma un miembro al instante y, si marcó la casilla opcional de publicación, su tarjeta aparece en el directorio. La ventana de espera es configurable (`HORAS_ESPERA` en el script, `publicacion_horas` en `contenido.js`). **Decisión del 26-08-2026: ventana en 0, publicación inmediata.** Si el board quiere una ventana de revisión (p. ej. 24 h) para borrar registros que no correspondan antes de que se vean, basta con cambiar ambos valores.
 
 El filtro se aplica en el servidor (`codigo.gs`), que es quien tiene los datos; el cliente lo repite por seguridad. Mientras no haya endpoint configurado, el formulario trabaja en modo de prueba: guarda el registro solo en el navegador de quien lo llenó y aplica la misma regla, para poder revisar el flujo completo sin montar la hoja.
 

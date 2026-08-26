@@ -21,7 +21,7 @@
 
 const HOJA_RESPUESTAS = "Respuestas";
 const HOJA_PUBLICO = "Publico";
-const HORAS_ESPERA = 24;               // ventana antes de publicar un nombre
+const HORAS_ESPERA = 0;                // horas antes de publicar un nombre (0 = de inmediato)
 const AVISAR_A = "catyvaras19@gmail.com"; // recibe un correo por cada registro nuevo
 const ESTADOS = ["QLD", "NSW", "VIC", "ACT", "SA", "WA", "NT", "TAS"];
 const COLUMNAS = [
@@ -53,10 +53,10 @@ function doPost(e) {
 
     if (fila > 0) {
       // Actualiza pero conserva la fecha original: no reinicia las 24 h.
-      const fechaOriginal = hoja.getRange(fila, 1).getValue();
-      const publicarOriginal = hoja.getRange(fila, 13).getValue();
-      valores[0] = fechaOriginal instanceof Date ? fechaOriginal : ahora;
-      valores[12] = publicarOriginal instanceof Date ? publicarOriginal : publicarDesde;
+      const fechaOriginal = aFecha_(hoja.getRange(fila, 1).getValue());
+      const publicarOriginal = aFecha_(hoja.getRange(fila, 13).getValue());
+      valores[0] = fechaOriginal || ahora;
+      valores[12] = publicarOriginal || publicarDesde;
       hoja.getRange(fila, 1, 1, valores.length).setValues([valores]);
     } else {
       hoja.appendRow(valores);
@@ -76,6 +76,7 @@ function doPost(e) {
 function doGet(e) {
   try {
     const accion = (e && e.parameter && e.parameter.accion) || "publico";
+    if (accion === "diagnostico") return json_(diagnostico_());
     if (accion !== "publico") return json_({ ok: false, error: "Acción desconocida" });
     const pub = miembrosPublicos_();
     return json_({
@@ -117,27 +118,55 @@ function validar_(d) {
   };
 }
 
+// Convierte lo que devuelve una celda (Date, número de serie o texto) en Date, o null.
+// No se usa `instanceof Date`: en Apps Script falla con valores que vienen de la hoja.
+function aFecha_(v) {
+  if (v === null || v === undefined || v === "") return null;
+  if (Object.prototype.toString.call(v) === "[object Date]") return isNaN(v.getTime()) ? null : v;
+  if (typeof v === "number") return new Date(Math.round((v - 25569) * 86400 * 1000)); // serie de Sheets
+  const d = new Date(String(v));
+  return isNaN(d.getTime()) ? null : d;
+}
+function esSi_(v) {
+  const s = String(v === true ? "si" : v).trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return s === "si" || s === "true" || s === "yes";
+}
+
 function miembrosPublicos_() {
   const filas = leerRespuestas_();
   const ahora = Date.now();
   const miembros = [], pendientesArr = [];
   filas.forEach(function (f) {
-    if (String(f.consent_publico).trim() !== "Sí") return;
-    const desde = f.publicar_desde instanceof Date
-      ? f.publicar_desde.getTime()
-      : (f.fecha instanceof Date ? f.fecha.getTime() + HORAS_ESPERA * 3600 * 1000 : NaN);
-    if (isNaN(desde)) return;
-    if (ahora >= desde) {
+    if (!esSi_(f.consent_publico)) return;
+    const fecha = aFecha_(f.fecha);
+    const publicar = aFecha_(f.publicar_desde) || (fecha ? new Date(fecha.getTime() + HORAS_ESPERA * 3600 * 1000) : null);
+    if (!publicar) return;
+    if (ahora >= publicar.getTime()) {
       miembros.push({
         nombre: f.nombre, estado: f.estado, area: f.area, rol: f.rol,
         linkedin: f.linkedin,
-        fecha: f.fecha instanceof Date ? f.fecha.toISOString() : ""
+        fecha: fecha ? fecha.toISOString() : ""
       });
     } else {
       pendientesArr.push(f);
     }
   });
   return { miembros: miembros, pendientes: pendientesArr.length };
+}
+
+// GET …/exec?accion=diagnostico → estado interno SIN datos personales, para depurar.
+function diagnostico_() {
+  const filas = leerRespuestas_();
+  return {
+    ok: true,
+    filas: filas.length,
+    con_consentimiento_publico: filas.filter(function (f) { return esSi_(f.consent_publico); }).length,
+    tipos_fecha: filas.slice(0, 3).map(function (f) {
+      return { fecha: Object.prototype.toString.call(f.fecha), publicar_desde: Object.prototype.toString.call(f.publicar_desde),
+               consent_publico: String(f.consent_publico), fecha_ok: !!aFecha_(f.fecha), publicar_ok: !!aFecha_(f.publicar_desde) };
+    }),
+    horas_espera: HORAS_ESPERA, avisar_a_configurado: !!AVISAR_A, ahora: new Date().toISOString()
+  };
 }
 
 function conteoPorEstado_() {

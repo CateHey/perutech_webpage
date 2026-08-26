@@ -33,15 +33,15 @@ const CONTENIDO = {
 
      publicacion_horas: cuántas horas después del registro aparece
      una persona en el directorio de miembros (solo si autorizó
-     publicar su nombre). Debe coincidir con HORAS_ESPERA en
-     apps-script/codigo.gs.
+     publicar su nombre). 0 = de inmediato. Debe coincidir con
+     HORAS_ESPERA en apps-script/codigo.gs.
 
      Ninguna de las URLs expone correos.
      ------------------------------------------------------------ */
   formulario: {
     endpoint: "https://script.google.com/macros/s/AKfycbyHmHceQYJ4IvJuEyW_JAhZlM0MqxRNyflqqKEgfaeINlTHZuU9kkk0elGjNnOkKPNL/exec",
     conteo_url: "",
-    publicacion_horas: 24
+    publicacion_horas: 0
   },
 
   hero: {

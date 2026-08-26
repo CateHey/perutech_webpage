@@ -96,9 +96,9 @@ El formulario de `unete.html` guarda cada registro en una hoja de cálculo de Go
 (montaje en `README-formulario.md`). Con cada registro:
 
 1. **El conteo de su estado sube de inmediato** y se ve en las fichas de `capitulos.html`.
-2. Si la persona marcó la casilla opcional de publicación, **su tarjeta aparece en el
-   directorio de miembros de `unete.html` 24 horas después**. Ese plazo es la ventana para que
-   el board revise el registro y borre lo que no corresponda antes de que se publique.
+2. Si la persona marcó la casilla opcional de publicación, **su tarjeta aparece de inmediato en el
+   directorio de miembros de `unete.html`**. (Existe una ventana de revisión configurable —
+   `publicacion_horas` en `contenido.js` y `HORAS_ESPERA` en `codigo.gs` — hoy en 0.)
 3. Si no la marcó, su nombre nunca aparece.
 
 Mientras `formulario.endpoint` esté vacío, el formulario funciona en modo de prueba

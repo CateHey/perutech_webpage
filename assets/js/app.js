@@ -38,7 +38,8 @@
   const HAY_CONTENIDO = typeof CONTENIDO === "object" && CONTENIDO !== null;
   const C = HAY_CONTENIDO ? CONTENIDO : {};
   const FORM = C.formulario || {};
-  const HORAS_PUBLICACION = Number(FORM.publicacion_horas) > 0 ? Number(FORM.publicacion_horas) : 24;
+  const HORAS_PUBLICACION = Number.isFinite(Number(FORM.publicacion_horas)) && Number(FORM.publicacion_horas) >= 0
+    ? Number(FORM.publicacion_horas) : 0;
   const MS_PUBLICACION = HORAS_PUBLICACION * 60 * 60 * 1000;
   const ENDPOINT = String(FORM.endpoint || "").trim();
   const CLAVE_DEMO = "ptau_registros_demo";
@@ -401,7 +402,7 @@
 
     if (nota) {
       const partes = [`${miembros.length} ${miembros.length === 1 ? "miembro publicado" : "miembros publicados"}`];
-      if (pub.pendientes > 0) partes.push(`${pub.pendientes} en espera de ${HORAS_PUBLICACION} h`);
+      if (pub.pendientes > 0 && HORAS_PUBLICACION > 0) partes.push(`${pub.pendientes} en espera de ${HORAS_PUBLICACION} h`);
       if (pub.demo) partes.push("modo de prueba · solo este navegador");
       nota.textContent = partes.join(" · ");
     }
@@ -411,7 +412,9 @@
       if (!lista.length) {
         el.innerHTML = `<p class="vacio">${codigo
           ? "Todavía no hay miembros publicados en este estado."
-          : `Todavía no hay miembros publicados. Cada registro aparece aquí ${HORAS_PUBLICACION} horas después de completarse, solo si la persona autorizó publicar su nombre.`}</p>`;
+          : (HORAS_PUBLICACION > 0
+              ? `Todavía no hay miembros publicados. Cada registro aparece aquí ${HORAS_PUBLICACION} horas después de completarse, solo si la persona autorizó publicar su nombre.`
+              : "Todavía no hay miembros publicados. Sé la primera persona: regístrate arriba y marca la casilla para aparecer aquí.")}</p>`;
         return;
       }
       el.innerHTML = lista.map((m) => {
@@ -523,7 +526,9 @@
     const confirmar = (reg, resultado) => {
       const publico = reg.consent_publico;
       const cuando = publico
-        ? `Como autorizaste publicar tu nombre, aparecerás en el directorio de miembros dentro de ${HORAS_PUBLICACION} horas.`
+        ? (HORAS_PUBLICACION > 0
+            ? `Como autorizaste publicar tu nombre, aparecerás en el directorio de miembros dentro de ${HORAS_PUBLICACION} horas.`
+            : "Como autorizaste publicar tu nombre, ya apareces en el directorio de miembros de esta página.")
         : `Solo sumaremos tu registro al conteo de ${esc(reg.estado)}; tu nombre no se publica porque no marcaste esa casilla.`;
       const demoAviso = resultado && resultado.demo
         ? `<p class="mono" style="margin-top:16px">Modo de prueba: este registro solo se guardó en este navegador. Conecta el endpoint para guardarlo en la hoja de cálculo.</p>` : "";

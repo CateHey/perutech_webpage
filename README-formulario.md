@@ -8,7 +8,7 @@ unete.html  ──POST──▶  Apps Script (codigo.gs)  ──▶  Hoja "Respu
                                                  ──▶  Hoja "Publico"     (solo totales)
 capitulos.html / unete.html  ◀──GET──  Apps Script  ──▶  conteo por estado
                                                           + directorio de miembros
-                                                            (autorizados, ≥ 24 h)
+                                                            (solo autorizados)
 ```
 
 ## 1. Crear la hoja
@@ -45,7 +45,7 @@ En `assets/js/contenido.js`:
 formulario: {
   endpoint: "https://script.google.com/macros/s/XXXXXXXX/exec",
   conteo_url: "",            // vacío: el conteo también sale del endpoint
-  publicacion_horas: 24
+  publicacion_horas: 0       // 0 = el nombre se publica de inmediato
 }
 ```
 
@@ -61,22 +61,21 @@ Nunca publiques la pestaña `Respuestas`.
 
 ---
 
-## Cómo funciona la publicación a las 24 horas
+## Cómo funciona la publicación
 
 Cuando alguien se registra:
 
-1. Se guarda la fila con la fecha y una columna `publicar_desde` = fecha + 24 h.
+1. Se guarda la fila con la fecha y una columna `publicar_desde` = fecha + `HORAS_ESPERA`.
 2. El conteo del estado sube **de inmediato** (la ficha de capítulo muestra `QLD · 43 miembros`).
-3. Si la persona marcó **«autorizo que mi nombre y foto se publiquen»**, su tarjeta aparece en el
-   **directorio de miembros** de `unete.html` cuando se cumple `publicar_desde`. Antes de eso no sale.
+3. Si la persona marcó **«autorizo que mi nombre… aparezcan en el directorio»**, su tarjeta aparece en el
+   **directorio de miembros** de `unete.html` cuando se cumple `publicar_desde`.
+   **Hoy `HORAS_ESPERA` es 0: aparece de inmediato.**
 4. Si no la marcó, su nombre **nunca** aparece; solo cuenta en el total.
 
-Esas 24 horas son la ventana de revisión del board: si un registro no corresponde (spam, broma,
-datos falsos), **borra la fila antes de que se cumpla el plazo** y nunca llega a publicarse.
-Para revisar rápido, ordena la pestaña `Respuestas` por la columna `publicar_desde`.
-
-Para cambiar la ventana: edita `HORAS_ESPERA` en `codigo.gs` (y vuelve a implementar) y
-`publicacion_horas` en `contenido.js`. Deben coincidir.
+Si un registro no corresponde (spam, broma, datos falsos), **borra la fila** en `Respuestas`: desaparece
+del directorio en la siguiente carga de la página. Si el board prefiere revisar antes de publicar, pon
+`HORAS_ESPERA = 24` en `codigo.gs` (y crea una versión nueva de la implementación) y
+`publicacion_horas: 24` en `contenido.js`. Deben coincidir.
 
 ## Qué devuelve el endpoint (GET `…/exec?accion=publico`)
 
@@ -88,8 +87,8 @@ Para cambiar la ventana: edita `HORAS_ESPERA` en `codigo.gs` (y vuelve a impleme
     { "nombre": "María Quispe", "estado": "QLD", "area": "Data / IA", "rol": "Data Engineer",
       "linkedin": "https://www.linkedin.com/in/...", "fecha": "2026-08-20T03:12:00.000Z" }
   ],
-  "pendientes": 2,
-  "horas_espera": 24
+  "pendientes": 0,
+  "horas_espera": 0
 }
 ```
 
@@ -98,7 +97,7 @@ Para cambiar la ventana: edita `HORAS_ESPERA` en `codigo.gs` (y vuelve a impleme
 ## Modo de prueba (sin endpoint)
 
 Mientras `endpoint` esté vacío, el formulario funciona en **modo de prueba**: guarda el registro
-solo en el navegador de quien lo llenó (`localStorage`) y aplica la misma regla de 24 h, para que
+solo en el navegador de quien lo llenó (`localStorage`) y aplica la misma regla de publicación, para que
 puedas probar el flujo completo antes de montar la hoja. El sitio lo indica con el texto
 «modo de prueba · solo este navegador». Nada sale de ese navegador. En cuanto pegues el endpoint,
 el modo de prueba deja de usarse.

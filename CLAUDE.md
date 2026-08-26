@@ -33,20 +33,21 @@ README-formulario.md        montaje de la base de datos paso a paso
   formulario (`ptau_registros_demo`), que se usa únicamente cuando `formulario.endpoint` está vacío.
   Con endpoint configurado no se guarda ningún dato personal en el navegador.
 
-## Formulario y directorio (regla de las 24 horas)
+## Formulario y directorio (ventana de publicación)
 - `unete.html` envía un `POST` (JSON, `Content-Type: text/plain` para evitar preflight CORS) al
   endpoint de Apps Script. El script valida, evita duplicados por correo y escribe en `Respuestas`.
 - El conteo por estado sube de inmediato y se muestra en las fichas de `capitulos.html`.
 - El **directorio de miembros** (`#directorioLista` en `unete.html`) muestra solo a quienes marcaron
-  `consent_publico` y cuyo registro tiene ≥ `publicacion_horas` (24) horas. El filtro se aplica en el
-  servidor (`HORAS_ESPERA` en `codigo.gs`) y se repite en el cliente por seguridad.
+  `consent_publico` y cuyo registro tiene ≥ `publicacion_horas` horas. **Hoy es 0: se publica de
+  inmediato** (decisión del 2026-08-26). El filtro se aplica en el servidor (`HORAS_ESPERA` en
+  `codigo.gs`) y se repite en el cliente; si se quiere ventana de revisión, poner 24 en ambos.
 - `GET …/exec?accion=publico` devuelve `{ conteo, miembros, pendientes }`. Nunca correos.
 - Si cambias la ventana, cambia **ambos**: `HORAS_ESPERA` y `publicacion_horas`.
 
 ## Cómo probar en local
 1. Abrir `index.html` con doble clic (o `python -m http.server` en la carpeta).
 2. Sin endpoint, el formulario entra en modo de prueba: el registro queda en `localStorage`.
-   Para ver el directorio sin esperar 24 h, en la consola:
+   Para sembrar el directorio en modo de prueba, en la consola:
    `localStorage.setItem('ptau_registros_demo', JSON.stringify([{nombre:'Prueba Uno',correo:'a@b.co',estado:'QLD',area:'Data / IA',consent_publico:true,fecha:new Date(Date.now()-25*3600e3).toISOString()}]))`
    y recargar `unete.html`.
 3. Validar sintaxis: `node --check assets/js/app.js assets/js/contenido.js` y
