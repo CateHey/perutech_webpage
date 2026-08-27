@@ -67,6 +67,24 @@ html[data-tema="vivo"] {
   --transicion: 180ms ease;
 }
 
+/* Respaldo para navegadores sin color-mix(): Samsung Internet y Chrome
+   anteriores a 111. Sin esto los fondos de vidrio quedan transparentes. */
+@supports not (background: color-mix(in srgb, white 50%, transparent)) {
+  :root {
+    --borde: rgba(255, 255, 255, 0.14);
+    --borde-fuerte: rgba(255, 255, 255, 0.30);
+    --vidrio: rgba(255, 255, 255, 0.05);
+    --vidrio-fuerte: rgba(0, 0, 0, 0.55);
+    --grana-tenue: rgba(255, 45, 78, 0.14);
+  }
+  .atmosfera { background: var(--abismo); }
+  .nav { background: var(--abismo); }
+  input[type="text"], input[type="email"], input[type="url"], select, textarea { background: rgba(0, 0, 0, 0.28); }
+  .contador-barra { background: rgba(255, 255, 255, 0.12); }
+  .nodo-dormido circle.base { fill: rgba(255, 255, 255, 0.18); }
+  .btn-primario, .marca-punto { box-shadow: none; }
+}
+
 /* ---------------- 3 · BASE ---------------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -182,11 +200,21 @@ section { padding-block: clamp(72px, 6vw + 40px, 132px); position: relative; }
 
 @media (max-width: 640px) {
   .nav-boton { display: inline-flex; align-items: center; justify-content: center; }
+  /* Sin backdrop-filter en móvil, a propósito: un elemento con backdrop-filter
+     se vuelve el bloque contenedor de sus hijos `position: fixed`, y eso hacía
+     que el panel del menú se anclara a la barra (68px de alto) en vez de a la
+     pantalla, quedando encima del contenido. Aquí la barra va en color sólido. */
+  .nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--abismo);
+  }
   .nav-enlaces {
     display: none; position: fixed; inset: var(--nav-alto) 0 0 0;
     flex-direction: column; gap: 0; padding: var(--e-3);
-    background: color-mix(in srgb, var(--abismo) 96%, transparent);
-    backdrop-filter: blur(20px);
+    background: var(--abismo);   /* sólido a propósito: nunca transparente */
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav-enlaces.abierto { display: flex; }
   .nav-enlaces a { font-size: 1.4rem; font-family: var(--f-display); padding: 18px 4px; border-bottom: 1px solid var(--borde); }
@@ -230,7 +258,7 @@ section { padding-block: clamp(72px, 6vw + 40px, 132px); position: relative; }
 .bajada { font-size: 1.15rem; max-width: 56ch; }
 .hero-acciones { display: flex; flex-wrap: wrap; gap: var(--e-2); margin-top: var(--e-4); }
 .cifras {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--e-2);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--e-2);
   margin-top: var(--e-5); padding-top: var(--e-4); border-top: 1px solid var(--borde);
 }
 .cifras:empty { display: none; }
@@ -263,17 +291,17 @@ section { padding-block: clamp(72px, 6vw + 40px, 132px); position: relative; }
 
 /* ---------------- 10 · WORKSHOPS ---------------- */
 .workshop {
-  display: grid; grid-template-columns: 160px 1fr auto; gap: var(--e-3); align-items: center;
+  display: grid; grid-template-columns: 190px 1fr auto; gap: var(--e-3); align-items: center;
   padding: var(--e-3); margin-bottom: var(--e-2);
   background: var(--vidrio); border: 1px solid var(--borde); border-radius: var(--radio);
   color: inherit; transition: border-color var(--transicion), transform var(--transicion);
 }
 a.workshop:hover { border-color: var(--cian); transform: translateY(-2px); color: inherit; }
 .workshop-imagen {
-  width: 160px; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden;
+  width: 190px; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden;
   background: var(--acento-degradado-suave);
 }
-.workshop-imagen img { width: 100%; height: 100%; object-fit: cover; }
+.workshop-imagen img { width: 100%; height: 100%; object-fit: contain; }
 .workshop h3 { margin: 6px 0 6px; }
 .workshop p { margin: 0; font-size: 0.95rem; }
 .workshop-flecha { font-size: 1.6rem; color: var(--cian); }

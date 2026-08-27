@@ -10,7 +10,7 @@ y se despliega copiando la carpeta a un repositorio de GitHub.
 ```
 index.html       Inicio      hero, misión y visión, pilares, workshops, respaldo
 capitulos.html   Capítulos   mapa de capítulos, fichas por estado, directiva
-servicios.html   Servicios   servicios gratuitos para miembros
+servicios.html   Servicios   servicios y programas para miembros
 unete.html       Únete       formulario de registro
 ```
 
@@ -83,10 +83,25 @@ Todas van en `assets/img/`, sin espacios en el nombre. Las que ya existen:
 | Archivo | Uso |
 |---------|-----|
 | `directiva-*.jpg` | Fotos de la directiva (cuadradas) |
+| `sydney-techsuyo.jpg` | Meetup TechSuyo en Sydney, junio 2025 — donde nació la idea |
+| `hola-networking.jpg` | Hola Networking 2025, Parlamento de Queensland |
 | `reunion.jpg` | Primera reunión de la comunidad (parque de Brisbane) |
-| `workshop-1.jpg`, `workshop-2.jpg` | Workshop «Crea tu landing page» (la 2 queda de repuesto) |
+| `workshop-1.jpg`, `workshop-2.jpg` | Workshop «Crea tu landing page», el segundo (la 2 queda de repuesto) |
+| `workshop-primero.jpg` | **Pendiente.** Foto del primer workshop |
 | `embajada.jpg`, `promperu.png` | Logos de respaldo |
 | `og-cover.png` | **Pendiente.** Imagen de 1200×630 para la previsualización al compartir |
+
+---
+
+## Qué NO se puede afirmar en el sitio
+
+El board acordó que habrá **servicios gratuitos y también con costo** (por ejemplo cuando hay
+invitados externos que cobran, obsequios de reconocimiento o comida). Por eso:
+
+- **Nunca** escribir «todo es gratuito», «es y será gratis» ni cifras del tipo «100% gratuito».
+- La gratuidad se declara **servicio por servicio**, con `gratuito: true` en `contenido.js`.
+  Solo esos muestran la etiqueta `GRATUITO`.
+- Lo que sí es siempre gratis y se puede decir: **registrarse como miembro**.
 
 ---
 
@@ -123,8 +138,11 @@ compararlas en vivo. **Antes de publicar**, borra en las cuatro páginas el bloq
 
 - [ ] Correo real de contacto (en `CONTENIDO.contacto.correo`)
 - [ ] URL real del LinkedIn de PeruTechAU
-- [ ] Confirmar con Yajaira el nombre exacto del servicio
-- [ ] Workshops: confirmar las fechas de la primera reunión y del workshop de landing page, y pegar los enlaces de LinkedIn (las fotos ya están)
+- [ ] **Primer workshop**: foto (`assets/img/workshop-primero.jpg`) y enlace de LinkedIn.
+      En `contenido.js` hay un bloque comentado listo para completar.
+- [ ] Fechas reales de Hola Networking, la primera reunión y el workshop de landing page
+      (hoy son provisionales, marcadas con `⚠️` en `contenido.js`)
+- [ ] Enlaces de LinkedIn de las cinco actividades
 - [ ] Bios de la directiva y **consentimiento escrito** de cada integrante (las fotos ya están cargadas;
       la de Yajaira trae el marco «#OpenToWork» de LinkedIn — pedir una sin marco)
 - [x] Logos de Embajada y PROMPERÚ cargados — falta el **aval escrito para usarlos**

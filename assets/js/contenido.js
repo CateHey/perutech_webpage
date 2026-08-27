@@ -16,7 +16,10 @@ const CONTENIDO = {
 
   contacto: {
     correo: "hola@perutechau.org",              // ← reemplazar por el correo real
-    linkedin: "https://www.linkedin.com/company/perutechau"  // ← reemplazar
+    linkedin: "https://www.linkedin.com/company/perutechau",  // ← reemplazar
+    // Grupo oficial de WhatsApp de la comunidad. Si se deja vacío,
+    // el enlace desaparece del pie de las cuatro páginas.
+    whatsapp: "https://shorturl.at/cKht1"
   },
 
   /* ---------------- FORMULARIO Y BASE DE DATOS ----------------
@@ -55,7 +58,7 @@ const CONTENIDO = {
   cifras: [
     { valor: "130+", etiqueta: "Miembros en el primer año" },
     { valor: "85%",  etiqueta: "Satisfacción en nuestros workshops" },
-    { valor: "100%", etiqueta: "Gratuito para miembros, siempre" }
+    { valor: "7",    etiqueta: "Estados esperando su capítulo" }
   ],
 
   nosotros: {
@@ -105,32 +108,48 @@ const CONTENIDO = {
   directiva: [
     { nombre:"Marcos Burgos",   cargo:"Head",
       bio:"", foto:"assets/img/directiva-marcos.jpg", linkedin:"" },
-    { nombre:"Yajaira Navarro", cargo:"General Manager",
+    { nombre:"Yajaira Navarro", cargo:"General Director",
       bio:"", foto:"assets/img/directiva-yajaira.jpg", linkedin:"" },
-    { nombre:"Catherine Varas", cargo:"General Manager de TI",
+    { nombre:"Catherine Varas", cargo:"IT Lead · Creadora de la web",
       bio:"", foto:"assets/img/directiva-catherine.jpg", linkedin:"" },
     { nombre:"Jhordy Novoa",    cargo:"Software & Cybersecurity Engineer",
       bio:"", foto:"assets/img/directiva-jhordy.jpg", linkedin:"" }
   ],
 
-  // ⚠️ PENDIENTE: confirmar con Yajaira el nombre exacto del servicio.
+  // Solo lo confirmado por el board. No prometer que todo es gratuito:
+  // habrá actividades con costo cuando haya invitados o materiales externos.
+  // Marca "gratuito: true" únicamente en los servicios que sí lo son.
   servicios: [
     { nombre:"Mentoría 1 a 1 en Building Innovation Capabilities",
-      descripcion:"Acompañamiento individual para desarrollar capacidades de innovación: validación de ideas, entrevistas a stakeholders y construcción de propuestas con impacto real.",
+      descripcion:"Una sesión de una hora al mes, en persona, de septiembre a diciembre de 2026. Cupos limitados: cuatro personas en total.",
       gratuito:true, capitulo:"Queensland" }
   ],
 
-  // ⚠️ PENDIENTE: confirmar las fechas y pegar el enlace de la
-  // publicación de LinkedIn de cada uno. Las fotos ya están
-  // (workshop-1 y workshop-2 son del workshop de landing page;
-  // reunion.jpg es la primera reunión).
-  // Si dejas el array vacío [], la sección entera desaparece.
+  // Todo lo que la comunidad ya hizo, en orden: se ordena solo por fecha,
+  // el más reciente aparece primero. Si dejas el array vacío [], la sección
+  // entera desaparece.
+  // ⚠️ PENDIENTE: pegar el "linkedin_url" de cada publicación y confirmar
+  // las fechas marcadas como provisionales.
   workshops: [
-    { titulo:"Primera reunión de PeruTechAU", fecha:"2025-01-01",
-      descripcion:"El punto de partida: la primera reunión de la comunidad, en un parque de Brisbane, donde nació PeruTechAU.",
+    { titulo:"Meetup TechSuyo en Sydney", fecha:"2025-06-01",
+      descripcion:"Marcos participó en el meetup de TechSuyo en Sydney, junto a la Embajada del Perú y PROMPERÚ. De ese encuentro salió la idea de armar PeruTechAU en Brisbane.",
+      imagen:"assets/img/sydney-techsuyo.jpg", linkedin_url:"" },
+    { titulo:"Hola Networking 2025", fecha:"2025-08-01",   // ⚠️ fecha provisional
+      descripcion:"Participamos en Hola Networking 2025, en el Parlamento de Queensland, presentando la comunidad a profesionales latinoamericanos y a empresas australianas.",
+      imagen:"assets/img/hola-networking.jpg", linkedin_url:"" },
+    { titulo:"Primera reunión de la comunidad", fecha:"2025-09-01",   // ⚠️ fecha provisional
+      descripcion:"La primera vez que nos juntamos en persona en un parque de Brisbane, para conocernos y decidir qué queríamos construir.",
       imagen:"assets/img/reunion.jpg", linkedin_url:"" },
-    { titulo:"Crea tu landing page", fecha:"2025-02-01",
-      descripcion:"Workshop presencial donde cada participante construyó y publicó su propia landing page, con certificado de participación.",
+
+    // ⚠️ PENDIENTE — PRIMER WORKSHOP: falta la foto y el enlace de LinkedIn.
+    // Copia la foto a assets/img/workshop-primero.jpg, quita las barras de
+    // las cuatro líneas de abajo y completa título, fecha y enlace.
+    // { titulo:"", fecha:"2025-10-01",
+    //   descripcion:"",
+    //   imagen:"assets/img/workshop-primero.jpg", linkedin_url:"" },
+
+    { titulo:"Crea tu landing page", fecha:"2025-11-01",   // ⚠️ fecha provisional · segundo workshop
+      descripcion:"Segundo workshop presencial: cada participante construyó y publicó su propia landing page, y se llevó su certificado de participación.",
       imagen:"assets/img/workshop-1.jpg", linkedin_url:"" }
   ],
 

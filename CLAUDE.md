@@ -33,6 +33,15 @@ README-formulario.md        montaje de la base de datos paso a paso
   formulario (`ptau_registros_demo`), que se usa únicamente cuando `formulario.endpoint` está vacío.
   Con endpoint configurado no se guarda ningún dato personal en el navegador.
 
+## Reglas de contenido que vienen del board
+- **Nunca afirmar que todo es gratuito** («es y será gratuito», «100% gratuito»). Hay y habrá
+  servicios con costo (invitados externos que cobran, obsequios, comida). La gratuidad se declara
+  servicio por servicio con `gratuito: true`. Lo único siempre gratis: **registrarse**.
+- Cargos exactos (revisión del 2026-08-27): Marcos Burgos *Head*, Yajaira Navarro *General Director*,
+  Catherine Varas *IT Lead · Creadora de la web*, Jhordy Novoa *Software & Cybersecurity Engineer*.
+- `workshops` en `contenido.js` es el historial completo de actividades, no solo workshops:
+  meetup de Sydney, Hola Networking, primera reunión, workshops. Se ordena solo por fecha.
+
 ## Formulario y directorio (ventana de publicación)
 - `unete.html` envía un `POST` (JSON, `Content-Type: text/plain` para evitar preflight CORS) al
   endpoint de Apps Script. El script valida, evita duplicados por correo y escribe en `Respuestas`.

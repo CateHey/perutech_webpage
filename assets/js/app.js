@@ -104,12 +104,14 @@
   (function pie() {
     const contacto = C.contacto || {};
     const correo = $("pieCorreo");
-    const linkedin = $("pieLinkedin");
     if (correo && contacto.correo) correo.href = "mailto:" + contacto.correo;
-    if (linkedin) {
-      const u = urlSegura(contacto.linkedin);
-      if (u) linkedin.href = u; else linkedin.hidden = true;
-    }
+    // Cada enlace externo desaparece si no hay URL configurada.
+    [["pieLinkedin", contacto.linkedin], ["pieWhatsapp", contacto.whatsapp]].forEach(([id, valor]) => {
+      const el = $(id);
+      if (!el) return;
+      const u = urlSegura(valor);
+      if (u) el.href = u; else el.hidden = true;
+    });
   })();
 
   /* ---------------- INICIO ---------------- */

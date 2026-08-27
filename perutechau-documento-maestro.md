@@ -1,7 +1,7 @@
 # PeruTechAU — Documento Maestro
 ## Requerimientos, dirección de diseño e implementación del sitio web y el formulario de miembros
 
-**Versión:** 4.1 — documento único. Fusiona el documento de requerimientos y el brief de implementación, conciliados con lo que ya está construido. Incorpora el directorio de miembros con publicación a las 24 horas.
+**Versión:** 4.2 — documento único. Fusiona el documento de requerimientos y el brief de implementación, conciliados con lo que ya está construido. Incorpora el directorio de miembros y la revisión de contenido del board del 27-08-2026.
 **Fecha:** agosto 2026
 **Alcance:** los dos entregables digitales — (A) sitio web y (B) formulario de miembros. Fuera de alcance: GRx, MVP del sector minero y demás temas del hilo del board.
 
@@ -42,8 +42,8 @@
 | Nombre | Cargo | Notas |
 |--------|-------|-------|
 | Marcos Burgos | Head | — |
-| Yajaira Navarro | General Manager | Vicepresidencia; compromiso enfocado en Queensland |
-| Catherine Varas | General Manager de TI | Autora del sitio; pasa a apoyo ligero tras el lanzamiento |
+| Yajaira Navarro | General Director | Vicepresidencia; compromiso enfocado en Queensland |
+| Catherine Varas | IT Lead · Creadora de la web | Autora del sitio; pasa a apoyo ligero tras el lanzamiento |
 | Jhordy Novoa | Software & Cybersecurity Engineer | Asume mantenimiento y actualizaciones |
 
 **Pendiente por integrante:** foto cuadrada (mín. 800×800 px), bio de máximo 240 caracteres, LinkedIn (opcional) y consentimiento explícito para publicar nombre e imagen.
@@ -64,7 +64,7 @@
 | RF-W-06 | Directiva | En la misma página de capítulos. | Alta | ✅ |
 | RF-W-07 | Página de Servicios | Un servicio por ahora; nombre pendiente de Yajaira. | Alta | ✅ |
 | RF-W-08 | Workshops realizados | Cada uno enlazado a su publicación de **LinkedIn**. | Alta | ✅ (faltan los enlaces) |
-| RF-W-09 | Identidad sin fines de lucro | Declarar que la organización es sin fines de lucro y que los servicios a miembros son gratuitos. | Media | ✅ |
+| RF-W-09 | Identidad sin fines de lucro | Declarar que la organización es sin fines de lucro. **No** afirmar que todo sea gratuito: habrá servicios con costo (invitados externos que cobran, obsequios de reconocimiento, comida). La gratuidad se declara servicio por servicio. | Media | ✅ (corregido el 27-08-2026) |
 | RF-W-10 | Contacto y redes | Footer con correo y LinkedIn de PeruTechAU. | Media | ✅ |
 | RF-W-11 | Responsive | Mobile-first; el tráfico llega desde WhatsApp y LinkedIn. | Alta | ✅ |
 | RF-W-12 | Formulario de registro en el sitio | Registro de miembros con el diseño propio de la página, sin formularios incrustados de terceros. | Alta | ✅ |
@@ -75,7 +75,7 @@
 index.html       Inicio      hero · quiénes somos · misión y visión · pilares ·
                              workshops · respaldo institucional · llamado a registrarse
 capitulos.html   Capítulos   mapa de capítulos · fichas por estado · directiva
-servicios.html   Servicios   servicios gratuitos para miembros
+servicios.html   Servicios   servicios y programas para miembros
 unete.html       Únete       formulario de registro y aviso de privacidad
 ```
 
@@ -467,7 +467,7 @@ El filtro se aplica en el servidor (`codigo.gs`), que es quien tiene los datos; 
 | 3 | Aprobación de misión, visión y «quiénes somos» | RF-W-01 | Board | ⏳ Borradores cargados |
 | 4 | Logos de Embajada y PROMPERÚ | RF-W-02 | Marcos | ✅ Cargados en `assets/img/` |
 | 5 | Aval escrito del uso de logos y texto autorizado | RF-W-02 | Marcos | ⏳ **Verificar antes de publicar** |
-| 6 | Workshops: nombre, fecha, URL de LinkedIn | RF-W-08 | Admin de LinkedIn | ⏳ Fotos cargadas; faltan título, fecha y enlaces confirmados |
+| 6 | Actividades: fechas reales, URL de LinkedIn, foto del primer workshop | RF-W-08 | Admin de LinkedIn | ⏳ Cinco actividades cargadas con foto; faltan fechas confirmadas y enlaces |
 | 7 | Bios y consentimiento de la directiva | RF-W-06 | Cada integrante | ⏳ Fotos cargadas; faltan bios y consentimiento escrito |
 | 8 | Logo de PeruTechAU en vectorial | Todos | Board | ⏳ |
 | 9 | Correo de contacto real y URL del LinkedIn | RF-W-10 | Board | ⏳ |
@@ -597,4 +597,5 @@ Cuando el board elija, borrar en las cuatro páginas el bloque `<aside id="selec
 | 2.0 | Investigación de hosting y dominio. GitHub Pages descartado por repo privado; `.org.au` descartado por reglas de auDA. Se añadió el brief de implementación. |
 | 3.0 | Dirección de arte completa, sistema UI/UX y borradores de contenido. Repo pasa a público → GitHub Pages vuelve a ser viable y el proyecto queda en costo cero salvo el dominio. |
 | 4.0 | Documento único. Se fusionan requerimientos y brief. Sitio construido: cuatro pestañas en vez de tres (se suma `unete.html`), paleta azul en tres variantes en vez de rojo/eucalipto, Space Grotesk + Inter en vez de Archivo Expanded + Public Sans, `contenido.js` en vez de archivos JSON, y se incorpora la arquitectura completa del formulario y la base de datos. |
-| **4.1** | **Directorio de miembros con ventana de 24 h** (RF-F-09, §9.9): el endpoint devuelve JSON con conteo, miembros autorizados y pendientes; nueva sección en `unete.html`. Se completan los archivos que faltaban (`estilos.css`, `app.js`, `codigo.gs`, `README-formulario.md`, `CLAUDE.md`, `.gitignore`), se cargan logos, fotos de directiva y de workshops, y se corrigen `csv_conteo` → `conteo_url` y los hex sueltos del SVG del mapa. |
+| 4.1 | **Directorio de miembros con ventana de 24 h** (RF-F-09, §9.9): el endpoint devuelve JSON con conteo, miembros autorizados y pendientes; nueva sección en `unete.html`. Se completan los archivos que faltaban (`estilos.css`, `app.js`, `codigo.gs`, `README-formulario.md`, `CLAUDE.md`, `.gitignore`), se cargan logos, fotos de directiva y de workshops, y se corrigen `csv_conteo` → `conteo_url` y los hex sueltos del SVG del mapa. |
+| **4.2** | **Revisión del board (27-08-2026).** Se retira toda afirmación de gratuidad total (RF-W-09): habrá servicios con costo. Cargos corregidos: Yajaira Navarro es *General Director*; Catherine Varas, *IT Lead y creadora de la web*. El servicio de mentoría se acota a lo confirmado: una hora al mes, en persona, de septiembre a diciembre de 2026, cuatro beneficiarios. Se suman al historial el meetup de TechSuyo en Sydney (junio 2025, donde nació la idea) y Hola Networking 2025; el workshop de landing page queda identificado como el segundo. Se corrige el menú móvil, que se veía transparente sobre el contenido en navegadores sin `color-mix()`. |
