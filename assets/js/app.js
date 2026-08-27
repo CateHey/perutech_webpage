@@ -20,10 +20,14 @@
   };
   const iniciales = (nombre) => String(nombre || "")
     .trim().split(/\s+/).slice(0, 2).map((p) => p[0] || "").join("").toUpperCase();
+  // Solo mes y año: "JUNIO 2026". Se añade la hora para que la fecha se lea en
+  // horario local; sin eso "2026-06-01" se interpreta como UTC y en husos al
+  // oeste (Perú, por ejemplo) retrocedía al mes anterior.
   const fechaLegible = (iso) => {
-    const d = new Date(iso);
-    if (isNaN(d)) return esc(iso);
-    return d.toLocaleDateString("es-PE", { day: "2-digit", month: "short", year: "numeric" });
+    const s = String(iso || "");
+    const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(s) ? s + "T00:00:00" : s);
+    if (isNaN(d)) return s;
+    return d.toLocaleDateString("es-PE", { month: "long", year: "numeric" }).replace(/ de /g, " ");
   };
   const bloque = (id, fn) => {
     const el = $(id);

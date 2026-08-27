@@ -40,7 +40,8 @@ README-formulario.md        montaje de la base de datos paso a paso
 - Cargos exactos (revisión del 2026-08-27): Marcos Burgos *Head*, Yajaira Navarro *General Director*,
   Catherine Varas *IT Lead · Creadora de la web*, Jhordy Novoa *Software & Cybersecurity Engineer*.
 - `workshops` en `contenido.js` es el historial completo de actividades, no solo workshops:
-  meetup de Sydney, Hola Networking, primera reunión, workshops. Se ordena solo por fecha.
+  meetup de Sydney, Hola Networking, primer evento presencial y las dos ediciones del taller.
+  Se ordena solo por fecha y **se muestra solo mes y año**, así que el día de `fecha` da igual.
 
 ## Formulario y directorio (ventana de publicación)
 - `unete.html` envía un `POST` (JSON, `Content-Type: text/plain` para evitar preflight CORS) al

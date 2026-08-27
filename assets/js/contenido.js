@@ -125,32 +125,27 @@ const CONTENIDO = {
       gratuito:true, capitulo:"Queensland" }
   ],
 
-  // Todo lo que la comunidad ya hizo, en orden: se ordena solo por fecha,
-  // el más reciente aparece primero. Si dejas el array vacío [], la sección
-  // entera desaparece.
-  // ⚠️ PENDIENTE: pegar el "linkedin_url" de cada publicación y confirmar
-  // las fechas marcadas como provisionales.
+  // Todo lo que la comunidad ya hizo, tomado de las publicaciones de LinkedIn.
+  // Se ordena solo por fecha: el más reciente aparece primero. Solo se muestra
+  // el mes y el año, así que el día de "fecha" da igual (se usa 01).
+  // Si dejas el array vacío [], la sección entera desaparece.
+  // ⚠️ PENDIENTE: pegar el "linkedin_url" de cada publicación.
   workshops: [
     { titulo:"Meetup TechSuyo en Sydney", fecha:"2025-06-01",
-      descripcion:"Marcos participó en el meetup de TechSuyo en Sydney, junto a la Embajada del Perú y PROMPERÚ. De ese encuentro salió la idea de armar PeruTechAU en Brisbane.",
+      descripcion:"Marcos participó en el primer meetup de TechSuyo, organizado por la Embajada del Perú, PROMPERÚ y PeruSV. De ese encuentro entre peruanos en ciencia y tecnología salió la idea de armar PeruTechAU en Brisbane.",
       imagen:"assets/img/sydney-techsuyo.jpg", linkedin_url:"" },
-    { titulo:"Hola Networking 2025", fecha:"2025-08-01",   // ⚠️ fecha provisional
-      descripcion:"Participamos en Hola Networking 2025, en el Parlamento de Queensland, presentando la comunidad a profesionales latinoamericanos y a empresas australianas.",
+    { titulo:"Hola Networking Business Expo 2025", fecha:"2025-09-01",
+      descripcion:"Representamos a la comunidad peruana de ciencia, tecnología e innovación en el Parlamento de Queensland, en la décima edición del evento, con más de 500 asistentes.",
       imagen:"assets/img/hola-networking.jpg", linkedin_url:"" },
-    { titulo:"Primera reunión de la comunidad", fecha:"2025-09-01",   // ⚠️ fecha provisional
-      descripcion:"La primera vez que nos juntamos en persona en un parque de Brisbane, para conocernos y decidir qué queríamos construir.",
+    { titulo:"Primer evento presencial", fecha:"2025-10-01",
+      descripcion:"La primera vez que nos juntamos en Brisbane. De ahí salieron los acuerdos que seguimos hasta hoy: el directorio de miembros, los círculos de mentoría y un programa de bienvenida para quien recién llega desde Perú.",
       imagen:"assets/img/reunion.jpg", linkedin_url:"" },
-
-    // ⚠️ PENDIENTE — PRIMER WORKSHOP: falta la foto y el enlace de LinkedIn.
-    // Copia la foto a assets/img/workshop-primero.jpg, quita las barras de
-    // las cuatro líneas de abajo y completa título, fecha y enlace.
-    // { titulo:"", fecha:"2025-10-01",
-    //   descripcion:"",
-    //   imagen:"assets/img/workshop-primero.jpg", linkedin_url:"" },
-
-    { titulo:"Crea tu landing page", fecha:"2025-11-01",   // ⚠️ fecha provisional · segundo workshop
-      descripcion:"Segundo workshop presencial: cada participante construyó y publicó su propia landing page, y se llevó su certificado de participación.",
-      imagen:"assets/img/workshop-1.jpg", linkedin_url:"" }
+    { titulo:"Taller de Website con IA", fecha:"2026-04-01",
+      descripcion:"Primera edición, en la Universidad de Queensland. Cada participante pasó de no haber programado nunca a publicar su propia web con Claude Code y Firebase Hosting. De ese taller salió la primera página de PeruTechAU.",
+      imagen:"assets/img/workshop-1.jpg", linkedin_url:"" },
+    { titulo:"Taller de Website con IA · segunda edición", fecha:"2026-06-01",
+      descripcion:"Segunda edición, en UQ St Lucia, con Mariano Aguilar Vela como expositor: dos horas para construir y desplegar una web funcional, sin experiencia previa en programación.",
+      imagen:"assets/img/workshop-2.jpg", linkedin_url:"" }
   ],
 
   // Logos institucionales. Coloca los archivos en assets/img/ y pon

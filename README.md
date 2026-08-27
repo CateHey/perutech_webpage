@@ -42,16 +42,19 @@ Agrégale su descripción y su correo:
 
 El mapa, el contador (`1 / 8 capítulos activos`) y la barra de progreso se actualizan solos.
 
-### Agregar un workshop
-Copia un bloque dentro de `workshops` y pega el enlace de la publicación de LinkedIn:
+### Agregar una actividad (workshops, encuentros, eventos)
+La lista `workshops` es el historial completo de la comunidad, no solo los talleres.
+Copia un bloque y pega el enlace de la publicación de LinkedIn:
 
 ```js
-{ titulo:"Nombre del workshop", fecha:"2026-03-15",
+{ titulo:"Nombre de la actividad", fecha:"2026-03-01",
   descripcion:"Una o dos líneas sobre qué se hizo.",
   imagen:"assets/img/workshop-marzo.jpg", linkedin_url:"https://www.linkedin.com/posts/..." }
 ```
 
-- Los workshops se ordenan solos: el más reciente aparece primero.
+- En pantalla **solo se ve el mes y el año** («MARZO 2026»), así que el día de `fecha`
+  da igual: usa `01` y basta.
+- Las actividades se ordenan solas: la más reciente aparece primero.
 - Si no hay imagen, se muestra un degradado en su lugar.
 - Si dejas el array vacío `[]`, toda la sección desaparece.
 
@@ -86,8 +89,8 @@ Todas van en `assets/img/`, sin espacios en el nombre. Las que ya existen:
 | `sydney-techsuyo.jpg` | Meetup TechSuyo en Sydney, junio 2025 — donde nació la idea |
 | `hola-networking.jpg` | Hola Networking 2025, Parlamento de Queensland |
 | `reunion.jpg` | Primera reunión de la comunidad (parque de Brisbane) |
-| `workshop-1.jpg`, `workshop-2.jpg` | Workshop «Crea tu landing page», el segundo (la 2 queda de repuesto) |
-| `workshop-primero.jpg` | **Pendiente.** Foto del primer workshop |
+| `workshop-1.jpg` | Taller de Website con IA — **primera** edición, abril 2026 |
+| `workshop-2.jpg` | Taller de Website con IA — **segunda** edición, junio 2026 |
 | `embajada.jpg`, `promperu.png` | Logos de respaldo |
 | `og-cover.png` | **Pendiente.** Imagen de 1200×630 para la previsualización al compartir |
 
@@ -138,11 +141,8 @@ compararlas en vivo. **Antes de publicar**, borra en las cuatro páginas el bloq
 
 - [ ] Correo real de contacto (en `CONTENIDO.contacto.correo`)
 - [ ] URL real del LinkedIn de PeruTechAU
-- [ ] **Primer workshop**: foto (`assets/img/workshop-primero.jpg`) y enlace de LinkedIn.
-      En `contenido.js` hay un bloque comentado listo para completar.
-- [ ] Fechas reales de Hola Networking, la primera reunión y el workshop de landing page
-      (hoy son provisionales, marcadas con `⚠️` en `contenido.js`)
-- [ ] Enlaces de LinkedIn de las cinco actividades
+- [ ] Enlaces de LinkedIn de las cinco actividades (`linkedin_url` en `contenido.js`).
+      Sin enlace, la tarjeta se muestra pero no es clicable.
 - [ ] Bios de la directiva y **consentimiento escrito** de cada integrante (las fotos ya están cargadas;
       la de Yajaira trae el marco «#OpenToWork» de LinkedIn — pedir una sin marco)
 - [x] Logos de Embajada y PROMPERÚ cargados — falta el **aval escrito para usarlos**
