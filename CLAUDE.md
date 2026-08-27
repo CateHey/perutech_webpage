@@ -38,7 +38,7 @@ README-formulario.md        montaje de la base de datos paso a paso
   servicios con costo (invitados externos que cobran, obsequios, comida). La gratuidad se declara
   servicio por servicio con `gratuito: true`. Lo único siempre gratis: **registrarse**.
 - Cargos exactos (revisión del 2026-08-27): Marcos Burgos *Head*, Yajaira Navarro *General Director*,
-  Catherine Varas *IT Lead · Creadora de la web*, Jhordy Novoa *Software & Cybersecurity Engineer*.
+  Catherine Varas *IT Director · Software, Data & AI Engineer · Creadora de la web*, Jhordy Novoa *Software & Cybersecurity Engineer*.
 - `workshops` en `contenido.js` es el historial completo de actividades, no solo workshops:
   meetup de Sydney, Hola Networking, primer evento presencial y las dos ediciones del taller.
   Se ordena solo por fecha y **se muestra solo mes y año**, así que el día de `fecha` da igual.
