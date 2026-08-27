@@ -110,7 +110,7 @@ const CONTENIDO = {
       bio:"", foto:"assets/img/directiva-marcos.jpg", linkedin:"" },
     { nombre:"Yajaira Navarro", cargo:"General Director",
       bio:"", foto:"assets/img/directiva-yajaira.jpg", linkedin:"" },
-    { nombre:"Catherine Varas", cargo:"IT Director · Software, Data & AI Engineer · Creadora de la web",
+    { nombre:"Catherine Varas", cargo:"Software, Data & AI Engineer · Creadora de la web",
       bio:"", foto:"assets/img/directiva-catherine.jpg", linkedin:"" },
     { nombre:"Jhordy Novoa",    cargo:"Software & Cybersecurity Engineer",
       bio:"", foto:"assets/img/directiva-jhordy.jpg", linkedin:"" }
